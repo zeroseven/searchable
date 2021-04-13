@@ -187,7 +187,7 @@ class SearchQuery extends AbstractQuery
     /**
      * @var array $searchFields
      */
-    protected $searchFields = ["_all"];
+    protected $searchFields = ["*"];
 
     /**
      * @return array
@@ -292,7 +292,7 @@ class SearchQuery extends AbstractQuery
     public function getPageCount()
     {
         if (!empty($this->result)) {
-            return (int)ceil($this->result['hits']['total'] / $this->size);
+            return (int)ceil($this->result['hits']['total']['value'] / $this->size);
         }
 
         return 0;
